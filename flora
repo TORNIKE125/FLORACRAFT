@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloom & Frame - Flowers & Pictures Shop</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config={theme:{extend:{colors:{primary:'#8b5cf6',secondary:'#ec4899'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <style>
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .hero-section {
+            background-image: url('https://readdy.ai/api/search-image?query=elegant%20floral%20shop%20with%20beautiful%20flower%20arrangements%20and%20framed%20pictures%2C%20soft%20natural%20lighting%2C%20minimalist%20interior%20design%2C%20pastel%20colors%2C%20professional%20photography%2C%20high%20resolution%2C%20clean%20aesthetic%2C%20white%20walls%20with%20wooden%20accents&width=1600&height=800&seq=123456&orientation=landscape');
+            background-size: cover;
+            background-position: center;
+        }
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        .custom-checkbox {
+            position: relative;
+            cursor: pointer;
+        }
+        .custom-checkbox input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+        .checkmark {
+            height: 20px;
+            width: 20px;
+            background-color: #fff;
+            border: 2px solid #e5e7eb;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .custom-checkbox input:checked ~ .checkmark {
+            background-color: #8b5cf6;
+            border-color: #8b5cf6;
+        }
+        .checkmark:after {
+            content: "";
+            display: none;
+        }
+        .custom-checkbox input:checked ~ .checkmark:after {
+            display: block;
+            width: 6px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+        .price-slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 4px;
+            background: #e5e7eb;
+            border-radius: 5px;
+            outline: none;
+        }
+        .price-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #8b5cf6;
+            cursor: pointer;
+        }
+        .price-slider::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #8b5cf6;
+            cursor: pointer;
+            border: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm fixed top-0 left-0 right-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+            <div class="flex items-center">
+                <a href="#" class="text-3xl font-['Pacifico'] text-primary">logo</a>
+            </div>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="#" class="text-gray-900 font-medium hover:text-primary transition">Home</a>
+                <a href="#" class="text-gray-600 hover:text-primary transition">Flowers</a>
+                <a href="#" class="text-gray-600 hover:text-primary transition">Pictures</a>
+                <a href="#" class="text-gray-600 hover:text-primary transition">About Us</a>
+                <a href="#" class="text-gray-600 hover:text-primary transition">Contact</a>
+            </nav>
+            
+            <div class="hidden md:flex items-center space-x-6">
+                <div class="relative">
+                    <input type="text" placeholder="Search products..." class="w-64 pl-10 pr-4 py-2 rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary">
+                    <div class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 flex items-center justify-center text-gray-400">
+                        <i class="ri-search-line"></i>
+                    </div>
+                </div>
+                
+                <div class="relative w-8 h-8 flex items-center justify-center">
+                    <i class="ri-user-line text-xl text-gray-700 hover:text-primary cursor-pointer"></i>
+                </div>
+                
+                <div class="relative w-8 h-8 flex items-center justify-center">
+                    <i class="ri-heart-line text-xl text-gray-700 hover:text-primary cursor-pointer"></i>
+                </div>
+                
+                <div class="relative w-8 h-8 flex items-center justify-center">
+                    <i class="ri-shopping-cart-line text-xl text-gray-700 hover:text-primary cursor-pointer"></i>
+                    <span class="absolute -top-1 -right-1 bg-primary text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">3</span>
+                </div>
+            </div>
+            
+            <div class="md:hidden w-8 h-8 flex items-center justify-center">
+                <i class="ri-menu-line text-2xl text-gray-700"></i>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-16">
+        <!-- Hero Section -->
+        <section class="hero-section relative">
+            <div class="absolute inset-0 bg-gradient-to-r from-white/90 to-white/20"></div>
+            <div class="container mx-auto px-4 py-20 md:py-32 relative z-10">
+                <div class="max-w-xl">
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">Beautiful Flowers & Artistic Pictures</h1>
+                    <p class="text-lg text-gray-700 mb-8">Transform your space with our curated collection of fresh blooms and stunning wall art. Handcrafted with love and delivered to your doorstep.</p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button class="bg-primary text-white px-8 py-3 rounded-button font-medium hover:bg-primary/90 transition shadow-lg shadow-primary/20 whitespace-nowrap">Shop Now</button>
+                        <button class="bg-white text-gray-800 px-8 py-3 rounded-button font-medium border border-gray-200 hover:bg-gray-50 transition whitespace-nowrap">Explore Collection</button>
+                    </div>
+                    <div class="flex mt-12 gap-6">
+                        <a href="#" class="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full shadow-sm hover:bg-white transition">
+                            <div class="w-6 h-6 flex items-center justify-center">
+                                <i class="ri-flower-line text-primary"></i>
+                            </div>
+                            <span class="font-medium">Fresh Flowers</span>
+                        </a>
+                        <a href="#" class="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full shadow-sm hover:bg-white transition">
+                            <div class="w-6 h-6 flex items-center justify-center">
+                                <i class="ri-image-line text-primary"></i>
+                            </div>
+                            <span class="font-medium">Wall Art</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories Section -->
+        <section class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-12">Shop by Category</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition">
+                        <img src="https://readdy.ai/api/search-image?query=beautiful%20bouquet%20of%20mixed%20flowers%20with%20roses%2C%20peonies%2C%20and%20greenery%20on%20a%20simple%20white%20background%2C%20professional%20studio%20lighting%2C%20high%20resolution%2C%20commercial%20photography%2C%20soft%20colors&width=600&height=800&seq=12345&orientation=portrait" alt="Bouquets" class="w-full h-80 object-cover object-top transition group-hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
+                            <div class="p-6 w-full">
+                                <h3 class="text-xl font-bold text-white mb-2">Bouquets</h3>
+                                <p class="text-white/80 text-sm mb-4">Handcrafted arrangements for every occasion</p>
+                                <a href="#" class="inline-flex items-center text-white font-medium">
+                                    Shop Collection
+                                    <div class="w-5 h-5 ml-2 flex items-center justify-center">
+                                        <i class="ri-arrow-right-line"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition">
+                        <img src="https://readdy.ai/api/search-image?query=elegant%20wedding%20flower%20arrangement%20with%20white%20roses%20and%20lilies%20on%20a%20simple%20white%20background%2C%20professional%20studio%20lighting%2C%20high%20resolution%2C%20commercial%20photography%2C%20soft%20colors&width=600&height=800&seq=12346&orientation=portrait" alt="Wedding Flowers" class="w-full h-80 object-cover object-top transition group-hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
+                            <div class="p-6 w-full">
+                                <h3 class="text-xl font-bold text-white mb-2">Wedding Flowers</h3>
+                                <p class="text-white/80 text-sm mb-4">Make your special day unforgettable</p>
+                                <a href="#" class="inline-flex items-center text-white font-medium">
+                                    Shop Collection
+                                    <div class="w-5 h-5 ml-2 flex items-center justify-center">
+                                        <i class="ri-arrow-right-line"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition">
+                        <img src="https://readdy.ai/api/search-image?query=beautiful%20nature%20landscape%20photography%20in%20frame%20on%20a%20simple%20white%20background%2C%20professional%20studio%20lighting%2C%20high%20resolution%2C%20commercial%20photography%2C%20soft%20colors&width=600&height=800&seq=12347&orientation=portrait" alt="Nature Pictures" class="w-full h-80 object-cover object-top transition group-hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
+                            <div class="p-6 w-full">
+                                <h3 class="text-xl font-bold text-white mb-2">Nature Pictures</h3>
+                                <p class="text-white/80 text-sm mb-4">Bring the outdoors into your home</p>
+                                <a href="#" class="inline-flex items-center text-white font-medium">
+                                    Shop Collection
+                                    <div class="w-5 h-5 ml-2 flex items-center justify-center">
+                                        <i class="ri-arrow-right-line"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition">
+                        <img src="https://readdy.ai/api/search-image?query=abstract%20floral%20art%20painting%20in%20frame%20on%20a%20simple%20white%20background%2C%20professional%20studio%20lighting%2C%20high%20resolution%2C%20commercial%20photography%2C%20soft%20colors&width=600&height=800&seq=12348&orientation=portrait" alt="Abstract Art" class="w-full h-80 object-cover object-top transition group-hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
+                            <div class="p-6 w-full">
+                                <h3 class="text-xl font-bold text-white mb-2">Abstract Art</h3>
+                                <p class="text-white/80 text-sm mb-4">Unique pieces to elevate your space</p>
+                                <a href="#" class="inline-flex items-center text-white font-medium">
+                                    Shop Collection
+                                    <div class="w-5 h-5 ml-2 flex items-center justify-center">
+                                        <i class="ri-arrow-right-line"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Products -->
+        <section class="py-16 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <div class="flex justify-between items-center mb-12">
+                    <h2 class="text-3xl font-bold">Featured Products</h2>
+                    <div class="flex gap-2">
+                        <button class="bg-white text-gray-800 px-4 py-2 rounded-button font-medium border border-gray-200 hover:bg-gray-50 transition whitespace-nowrap">
+                            <div class="flex items-center gap-2">
+                                <span>Sort by</span>
+                                <div class="w-4 h-4 flex items-center justify-center">
+                                    <i class="ri-arrow-down-s-line"></i>
+                                </div>
+                            </div>
+                        </button>
+                        <button class="bg-white text-gray-800 px-4 py-2 rounded-button font-medium border border-gray-200 hover:bg-gray-50 transition whitespace-nowrap">
+                            <div class="flex items-center gap-2">
+                                <div class="w-4 h-4 flex items-center justify-center">
+                                    <i class="ri-filter-3-line"></i>
+                                </div>
+                                <span>Filters</span>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                    <!-- Product 1 -->
+                    <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition group">
+                        <div class="relative">
+                            <img src="https://readdy.ai/api/search-image?query=elegant%20bouquet%20of%20pink%20roses%20and%20white%20peonies%20with%20eucalyptus%20on%20a%20simple%20white%20background%2C%20professional%20studio%20lighting%2C%20high%20resolution%2C%20commercial%20photography%2C%20soft%20colors&width=600&height=600&seq=12349&orientation=squarish" alt="Spring Blush Bouquet" class="w-full h-64 object-cover object-top">
+                            <div class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-sm opacity-0 group-hover:opacity-100 transition">
+                                <i class="ri-heart-line text-gray-700 hover:text-primary cursor-pointer"></i>
+                            </div>
+                            <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent h-20 opacity-0 group-hover:opacity-100 transition flex items-end justify-center pb-4">
+                                <button class="bg-white text-gray-800 px-4 py-2 rounded-button font-medium hover:bg-gray-50 transition shadow-sm whitespace-nowrap">Quick View</button>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-medium text-gray-900">Spring Blush Bouquet</h3>
+                                <span class="text-primary font-semibold">$49.99</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-4">Fresh pink roses with peonies</p>
+                            <button class="w-full bg-primary/10 text-primary px-4 py-2 rounded-button font-medium hover:bg-primary/20 transition whitespace-nowrap">Add to Cart</button>
+                        </div>
+                    </div>
+
+                    <!-- Product 2 -->
+                    <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition group">
+                        <div class="relative">
+                            <img src="https://readdy.ai/api/search-image?query=elegant%20bouquet%20of%20white%20lilies%20and%20roses%20with%20greenery%20on%20a%20simple%20white%20background%2C%20professional%20studio%20lighting%2C%20high%20resolution%2C%20commercial%20photography%2C%20soft%20colors&width=600&height=600&seq=12350&orientation=squarish" alt="Pure Elegance Bouquet" class="w-full h-64 object-cover object-top">
+                            <div class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-sm opacity-0 group-hover:opacity-100 transition">
+                                <i class="ri-heart-line text-gray-700 hover:text-primary cursor-pointer"></i>
+                            </div>
+                            <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent h-20 opacity-0 group-hover:opacity-100 transition flex items-end justify-center pb-4">
+                                <button class="bg-white text-gray-800 px-4 py-2 rounded-button font-medium hover:bg-gray-50 transition shadow-sm whitespace-nowrap">Quick View</button>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-medium text-gray-900">Pure Elegance Bouquet</h3>
+                                <span class="text-primary font-semibold">$59.99</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-4">White lilies and roses arrangement</p>
+                            <button class="w-full bg-primary/10 text-primary px-4 py-2 rounded-button font-medium hover:bg-primary/20 transition whitespace-nowrap">Add to Cart</button>
+                        </div>
+                    </div>
+
+                    <!-- Product 3 -->
+                    <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition group">
+                        <div class="relative">
+                            <img src="https://readdy.ai/api/search-image?query=beautiful%20framed%20mountain%20landscape%20photography%20on%20a%20simple%20white%20background%2C%20professional%20studio%20lighting%2C%20high%20resolution%2C%20commercial%20photography%2C%20soft%20colors&width=600&height=600&seq=12351&orientation=squarish" alt="Mountain Serenity Print" class="w-full h-64 object-cover object-top">
+                            <div class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-sm opacity-0 group-hover:opacity-100 transition">
+                                <i class="ri-heart-line text-gray-700 hover:text-primary cursor-pointer"></i>
+                            </div>
+                            <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent h-20 opacity-0 group-hover:opacity-100 transition flex items-end justify-center pb-4">
+                                <button class="bg-white text-gray-800 px-4 py-2 rounded-button font-medium hover:bg-gray-50 transition shadow-sm whitespace-nowrap">Quick View</button>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-medium text-gray-900">Mountain Serenity Print</h3>
+                                <span class="text-primary font-semibold">$89.99</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-4">Framed landscape photography</p>
+                            <button class="w-full bg-primary/10 text-primary px-4 py-2 rounded-button font-medium hover:bg-primary/20 transition whitespace-nowrap">Add to Cart</button>
+                        </div>
+                    </div>
+
+                    <!-- Product 4 -->
+                    <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition group">
+                        <div class="relative">
+                            <img src="https://readdy.ai/api/search-image?query=abstract%20floral%20painting%20in%20elegant%20frame%20on%20a%20simple%20white%20background%2C%20professional%20studio%20lighting%2C%20high%20resolution%2C%20commercial%20photography%2C%20soft%20colors&width=600&height=600&seq=12352&orientation=squarish" alt="Floral Dreams Canvas" class="w-full h-64 object-cover object-top">
+                            <div class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-sm opacity-0 group-hover:opacity-100 transition">
+                                <i class="ri-heart-line text-gray-700 hover:text-primary cursor-pointer"></i>
+                            </div>
+                            <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent h-20 opacity-0 group-hover:opacity-100 transition flex items-end justify-center pb-4">
+                                <button class="bg-white text-gray-800 px-4 py-2 rounded-button font-medium hover:bg-gray-50 transition shadow-sm whitespace-nowrap">Quick View</button>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-medium text-gray-900">Floral Dreams Canvas</h3>
+                                <span class="text-primary font-semibold">$129.99</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-4">Abstract floral art in wooden frame</p>
+                            <button class="w-full bg-primary/10 text-primary px-4 py-2 rounded-button font-medium hover:bg-primary/20 transition whitespace-nowrap">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-center mt-12">
+                    <button class="bg-white text-gray-800 px-8 py-3 rounded-button font-medium border border-gray-200 hover:bg-gray-50 transition shadow-sm whitespace-nowrap">View All Products</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Listing with Filters -->
+        <section class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-12">Our Collection</h2>
+                
+                <div class="flex flex-col lg:flex-row gap-8">
+                    <!-- Filters Sidebar -->
+                    <div class="lg:w-1/4">
+                        <div class="bg-gray-50 rounded-lg p-6">
+                            <h3 class="font-semibold text-lg mb-4">Filters</h3>
+                            
+                            <div class="mb-6">
+                                <h4 class="font-medium mb-3">Categories</h4>
+                                <div class="space-y-2">
+                                    <label class="custom-checkbox flex items-center gap-2">
+                                        <input type="checkbox" checked>
+                                        <span class="checkmark"></span>
+                                        <span>All Products</span>
+                                    </label>
+                                    <label class="custom-checkbox flex items-center gap-2">
+                                        <input type="checkbox">
+                                        <span class="checkmark"></span>
+                                        <span>Bouquets</span>
+                                    </label>
+                                    <label class="custom-checkbox flex items-center gap-2">
+                                        <input type="checkbox">
+                                        <span class="checkmark"></span>
+                                        <span>Single Stems</span>
+                                    </label>
+                                    <label class="custom-checkbox flex items-center gap-2">
+                                        <input type="checkbox">
+                                        <span class="checkmark"></span>
+                                        <span>Wedding Flowers</span>
+                                    </label>
+                                    <label class="custom-checkbox flex items-center gap-2">
+                                        <input type="checkbox">
+                                        <span class="checkmark"></span>
+                                        <span>Nature Pictures</span>
+                                    </label>
+                                    <label class="custom-checkbox flex items-center gap-2">
+                                        <input type="checkbox">
+                                        <span class="checkmark"></span>
+                                        <span>Abstract Art</span>
+                                    </label>
+                                    <label class="custom-checkbox flex items-center gap-2">
+                                        <input type="checkbox">
+                                        <span class="checkmark"></span>
+                                        <span>Floral Art</span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-6">
+                                <h4 class="font-medium mb-3">Price Range</h4>
+                                <input type="range" min="0" max="500" value="200" class="price-slider w-full mb-2">
+                                <div class="flex justify-between">
+                                    <span class="text-sm text-gray-600">$0</span>
+                                    <span class="text-sm text-gray-600">$500</span>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-6">
+                                <h4 class="font-medium mb-3">Colors</h4>
+                                <div class="flex flex-wrap gap-2">
+                                    <div class="w-8 h-8 rounded-full bg-red-400 cursor-pointer border-2 border-white hover:border-gray-300"></div>
+                                    <div class="w-8 h-8 rounded-full bg-pink-400 cursor-pointer border-2 border-white hover:border-gray-300"></div>
+                                    <div class="w-8 h-8 rounded-full bg-purple-400 cursor-pointer border-2 border-white hover:border-gray-300"></div>
+                                    <div class="w-8 h-8 rounded-full bg-blue-400 cursor-pointer border-2 border-white hover:border-gray-300"></div>
+                                    <div class="w-8 h-8 rounded-full bg-green-400 cursor-pointer border-2 border-white hover:border-gray-300"></div>
+                                    <div class="w-8 h-8 rounded-full bg-yellow-400 cursor-pointer border-2 border-white hover:border-gray-300"></div>
+                                    <div class="w-8 h-8 rounded-full bg-white cursor-pointer border-2 border-gray-300 hover:border-gray-400"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h4 class="font-medium mb-3">Size</h4>
+                                <div class="flex flex-wrap gap-2">
+                                    <button class="px-3 py-1 border border-gray-200 rounded text-sm hover:border-primary hover:text-primary">S</button>
+                                    <button class="px-3 py-1 border border-gray-200 rounded text-sm hover:border-primary hover:text-primary">M</button>
+                                    <button class="px-3 py-1 border border-primary rounded text-sm text-primary bg-primary/5">L</button>
+                                    <button class="px-3 py-1 border border-gray-200 rounded text-sm hover:border-primary hover:text-primary">XL</button>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-8 flex gap-2">
+                                <button class="bg-primary text-white px-4 py-2 rounded-button font-medium hover:bg-primary/90 transition whitespace-nowrap flex-1">Apply Filters</button>
+                                <button class="bg-white text-gray-600 px-4 py-2 rounded-button font-medium border border-gray-200 hover:bg-gray-50 transition whitespace-nowrap">Reset</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Products Grid -->
+                    <div class="lg:w-3/4">
+                        <div class="flex justify-between items-center mb-6">
+                            <p class="text-gray-600">Showing 1-8 of 24 products</p>
+                            <div class="relative">
+                                <button class="bg-white text-gray-800 px-4 py-2 rounded-button font-medium border border-gray-200 hover:bg-gray-50 transition whitespace-nowrap flex items-center gap-2">
+                                    <span>Sort by: Featured</span>
+                                    <div class="w-4 h-4 flex items-center justify-center">
+                                        <i class="ri-arrow-down-s-line"></i>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <!-- Product 1 -->
+                            <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition group">
+                                <div class="relative">
+                                    <img src="https://readdy.ai/api/search-image?query=elegant%20bouquet%20of%20red%20roses%20on%20a%20simple%20white%20background%2C%20professional%20studio%20lighting%2C%20high%20resolution%2C%20commercial%20photography%2C%20soft%20colors&width=600&height=600&seq=12353&orientation=squarish" alt="Red Romance Bouquet" class="w-full h-64 object-cover object-top">
+                                    <div class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-sm opacity-0 group-hover:opacity-100 transition">
+                                        <i class="ri-heart-line text-gray-700 hover:text-primary cursor-pointer"></i>
+                                    </div>
+                                    <div class="absolute top-4 left-4">
+                                        <span class="bg-primary text-white text-xs px-2 py-1 rounded">New</span>
+                                    </div>
+                                </div>
+                                <div class="p-4">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <h3 class="font-medium text-gray-900">Red Romance Bouquet</h3>
+                                        <span class="text-primary font-semibold">$54.99</span>
+                                    </div>
+                                    <p class="text-gray-600 text-sm mb-4">12 premium red roses</p>
+                                    <button class="w-full bg-primary/10 text-primary px-4 py-2 rounded-button font-medium hover:bg-primary/20 transition whitespace-nowrap">Add to Cart</button>
+                                </div>
+                            </div>
+                            
+                            <!-- Product 2 -->
+                            <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition group">
+                                <div class="relative">
+                                    <img src="https://readdy.ai/api/search-image?query=elegant%20bouquet%20of%20purple%20and%20white%20flowers%20with%20eucalyptus%20on%20a%20simple%20white%20background%2C%20professional%20studio%20lighting%2C%20high%20resolution%2C%20commercial%20photography%2C%20soft%20colors&width=600&height=600&seq=12354&orientation=squarish" alt="Lavender Dreams Bouquet" class="w-full h-64 object-cover object-top">
+                                    <div class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-sm opacity-0 group-hover:opacity-100 transition">
+                                        <i class="ri-heart-line text-gray-700 hover:text-primary cursor-pointer"></i>
+                                    </div>
+                                </div>
+                                <div class="p-4">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <h3 class="font-medium text-gray-900">Lavender Dreams Bouquet</h3>
+                                        <span class="text-primary font-semibold">$49.99</span>
+                                    </div>
+                                    <p class="text-gray-600 text-sm mb-4">Purple and white mixed flowers</p>
+                                    <button class="w-full bg-primary/10 text-primary px-4 py-2 rounded-button font-medium hover:bg-primary/20 transition whitespace-nowrap">Add to Cart</button>
+                                </div>
+                            </div>
+                            
+                            <!-- Product 3 -->
+                            <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition group">
+                                <div class="relative">
+                                    <img src="https://readdy.ai/api/search-image?query=beautiful%20framed%20beach%20sunset%20photography%20on%20a%20simple%20white%20background%2C%20professional%20studio%20lighting%2C%20high%20resolution%2C%20commercial%20photography%2C%20soft%20colors&width=600&height=600&seq=12355&orientation=squarish" alt="Sunset Beach Print" class="w-full h-64 object-cover object-top">
+                                    <div class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-sm opacity-0 group-hover:opacity-100 transition">
+                                        <i class="ri-heart-line text-gray-700 hover:text-primary cursor-pointer"></i>
+                                    </div>
+                                    <div class="absolute top-4 left-4">
+                                        <span class="bg-green-500 text-white text-xs px-2 py-1 rounded">Sale</span>
+                                    </div>
+                                </div>
+                                <div class="p-4">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <h3 class="font-medium text-gray-900">Sunset Beach Print</h3>
+                                        <div>
+                                            <span class="text-gray-400 line-through text-sm mr-1">$119.99</span>
+                                            <span class="text-primary font-semibold">$89.99</span>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-600 text-sm mb-4">Framed beach sunset photography</p>
+                                    <button class="w-full bg-primary/10 text-primary px-4 py-2 rounded-button font-medium hover:bg-primary/20 transition whitespace-nowrap">Add to Cart</button>
+                                </div>
+                            </div>
+                            
+                            <!-- Product 4 -->
+                            <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition group">
+                                <div class="relative">
+                                    <img src="https://readdy.ai/api/search-image?query=single%20white%20lily%20flower%20on%20a%20simple%20white%20background%2C%20professional%20studio%20lighting%2C%20high%20resolution%2C%20commercial%20photography%2C%20soft%20colors&width=600&height=600&seq=12356&orientation=squarish" alt="Single White Lily" class="w-full h-64 object-cover object-top">
+                                    <div class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-sm opacity-0 group-hover:opacity-100 transition">
+                                        <i class="ri-heart-line text-gray-700 hover:text-primary cursor-pointer"></i>
+                                    </div>
+                                </div>
+                                <div class="p-4">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <h3 class="font-medium text-gray-900">Single White Lily</h3>
+                                        <span class="text-primary font-semibold">$12.99</span>
+                                    </div>
+                                    <p class="text-gray-600 text-sm mb-4">Premium white lily stem</p>
+                                    <button class="w-full bg-primary/10 text-primary px-4 py-2 rounded-button font-medium hover:bg-primary/20 transition whitespace-nowrap">Add to Cart</button>
+                                </div>
+                            </div>
+                            
+                            <!-- Product 5 -->
+                            <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition group">
+                                <div class="relative">
+                                    <img src="https://readdy.ai/api/search-image?query=abstract%20colorful%20painting%20in%20elegant%20black%20frame%20on%20a%20simple%20white%20background%2C%20professional%20studio%20lighting%2C%20high%20resolution%2C%20commercial%20photography%2C%20soft%20colors&width=600&height=600&seq=12357&orientation=squarish" alt="Abstract Harmony Canvas" class="w-full h-64 object-cover object-top">
+                                    <div class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-sm opacity-0 group-hover:opacity-100 transition">
+                                        <i class="ri-heart-line text-gray-700 hover:text-primary cursor-pointer"></i>
+                                    </div>
+                                </div>
+                                <div class="p-4">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <h3 class="font-medium text-gray-900">Abstract Harmony Canvas</h3>
+                                        <span class="text-primary font-semibold">$149.99</span>
+                                    </div>
+                                    <p class="text-gray-600 text-sm mb-4">Modern abstract art in black frame</p>
+                                    <button class="w-full bg-primary/10 text-primary px-4 py-2 rounded-button font-medium hover:bg-primary/20 transition whitespace-nowrap">Add to Cart</button>
+                                </div>
+                            </div>
+                            
+                            <!-- Product 6 -->
+                            <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition group">
+                                <div class="relative">
+                                    <img src="https://readdy.ai/api/search-image?query=elegant%20wedding%20bouquet%20with%20white%20roses%20and%20greenery%20on%20a%20simple%20white%20background%2C%20professional%20studio%20lighting%2C%20high%20resolution%2C%20commercial%20photography%2C%20soft%20colors&width=600&height=600&seq=12358&orientation=squarish" alt="Bridal Elegance Bouquet" class="w-full h-64 object-cover object-top">
+                                    <div class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-sm opacity-0 group-hover:opacity-100 transition">
+                                        <i class="ri-heart-line text-gray-700 hover:text-primary cursor-pointer"></i>
+                                    </div>
+                                    <div class="absolute top-4 left-4">
+                                        <span class="bg-blue-500 text-white text-xs px-2 py-1 rounded">Featured</span>
+                                    </div>
+                                </div>
+                                <div class="p-4">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <h3 class="font-medium text-gray-900">Bridal Elegance Bouquet</h3>
+                                        <span class="text-primary font-semibold">$129.99</span>
+                                    </div>
+                                    <p class="text-gray-600 text-sm mb-4">Premium wedding bouquet</p>
+                                    <button class="w-full bg-primary/10 text-primary px-4 py-2 rounded-button font-medium hover:bg-primary/20 transition whitespace-nowrap">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-center mt-10">
+                            <nav class="flex items-center gap-1">
+                                <button class="w-10 h-10 flex items-center justify-center rounded border border-gray-200 text-gray-600 hover:border-primary hover:text-primary">
+                                    <i class="ri-arrow-left-s-line"></i>
+                                </button>
+                                <button class="w-10 h-10 flex items-center justify-center rounded bg-primary text-white">1</button>
+                                <button class="w-10 h-10 flex items-center justify-center rounded border border-gray-200 text-gray-600 hover:border-primary hover:text-primary">2</button>
+                                <button class="w-10 h-10 flex items-center justify-center rounded border border-gray-200 text-gray-600 hover:border-primary hover:text-primary">3</button>
+                                <button class="w-10 h-10 flex items-center justify-center rounded border border-gray-200 text-gray-600 hover:border-primary hover:text-primary">
+                                    <i class="ri-arrow-right-s-line"></i>
+                                </button>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="py-16 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-12">What Our Customers Say</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <div class="flex text-primary mb-4">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                        </div>
+                        <p class="text-gray-700 mb-6">"The flowers I ordered for my mother's birthday were absolutely stunning! They arrived on time and stayed fresh for over a week. Will definitely order again."</p>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center text-gray-500 mr-4">
+                                <i class="ri-user-line text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">Emily Richardson</h4>
+                                <p class="text-gray-600 text-sm">New York, USA</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <div class="flex text-primary mb-4">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                        </div>
+                        <p class="text-gray-700 mb-6">"I purchased the Mountain Serenity Print for my living room and it's absolutely perfect. The quality is exceptional and it arrived well-packaged and protected."</p>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center text-gray-500 mr-4">
+                                <i class="ri-user-line text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">Michael Thompson</h4>
+                                <p class="text-gray-600 text-sm">London, UK</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <div class="flex text-primary mb-4">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-half-fill"></i>
+                        </div>
+                        <p class="text-gray-700 mb-6">"The wedding flowers exceeded our expectations! The arrangements were exactly what we wanted and the team was so helpful throughout the planning process."</p>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center text-gray-500 mr-4">
+                                <i class="ri-user-line text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">Sophia Martinez</h4>
+                                <p class="text-gray-600 text-sm">Toronto, Canada</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter -->
+        <section class="py-16 bg-primary/5">
+            <div class="container mx-auto px-4">
+                <div class="max-w-3xl mx-auto text-center">
+                    <h2 class="text-3xl font-bold mb-4">Join Our Newsletter</h2>
+                    <p class="text-gray-600 mb-8">Subscribe to receive updates, exclusive offers, and inspiration for your home.</p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto">
+                        <input type="email" placeholder="Your email address" class="flex-1 px-4 py-3 rounded-button border-none focus:outline-none focus:ring-2 focus:ring-primary/20 shadow-sm">
+                        <button class="bg-primary text-white px-6 py-3 rounded-button font-medium hover:bg-primary/90 transition shadow-lg shadow-primary/20 whitespace-nowrap">Subscribe</button>
+                    </div>
+                    
+                    <p class="text-gray-500 text-sm mt-4">By subscribing, you agree to our Privacy Policy and consent to receive updates from our company.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <a href="#" class="text-3xl font-['Pacifico'] text-white mb-6 inline-block">logo</a>
+                    <p class="text-gray-400 mb-6">Bringing beauty to your space with our curated collection of fresh flowers and stunning wall art.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition">
+                            <i class="ri-facebook-fill"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition">
+                            <i class="ri-instagram-line"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition">
+                            <i class="ri-pinterest-line"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition">
+                            <i class="ri-twitter-x-line"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="font-semibold text-lg mb-6">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Shop</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-semibold text-lg mb-6">Customer Service</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">My Account</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Track Order</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Shipping Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Returns & Refunds</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-semibold text-lg mb-6">Contact Us</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <div class="w-5 h-5 flex items-center justify-center text-gray-400 mr-3 mt-1">
+                                <i class="ri-map-pin-line"></i>
+                            </div>
+                            <span class="text-gray-400">123 Bloom Street, Floral City, FC 12345</span>
+                        </li>
+                        <li class="flex items-center">
+                            <div class="w-5 h-5 flex items-center justify-center text-gray-400 mr-3">
+                                <i class="ri-phone-line"></i>
+                            </div>
+                            <span class="text-gray-400">+1 (555) 123-4567</span>
+                        </li>
+                        <li class="flex items-center">
+                            <div class="w-5 h-5 flex items-center justify-center text-gray-400 mr-3">
+                                <i class="ri-mail-line"></i>
+                            </div>
+                            <span class="text-gray-400">info@bloomandframe.com</span>
+                        </li>
+                        <li class="flex items-center">
+                            <div class="w-5 h-5 flex items-center justify-center text-gray-400 mr-3">
+                                <i class="ri-time-line"></i>
+                            </div>
+                            <span class="text-gray-400">Mon-Fri: 9AM-6PM, Sat: 10AM-4PM</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-500 text-sm mb-4 md:mb-0">© 2025 Bloom & Frame. All rights reserved.</p>
+                    
+                    <div class="flex items-center space-x-4">
+                        <div class="flex items-center text-gray-500">
+                            <span class="mr-2">We Accept:</span>
+                            <div class="flex space-x-2">
+                                <div class="w-8 h-8 flex items-center justify-center">
+                                    <i class="ri-visa-fill text-xl"></i>
+                                </div>
+                                <div class="w-8 h-8 flex items-center justify-center">
+                                    <i class="ri-mastercard-fill text-xl"></i>
+                                </div>
+                                <div class="w-8 h-8 flex items-center justify-center">
+                                    <i class="ri-paypal-fill text-xl"></i>
+                                </div>
+                                <div class="w-8 h-8 flex items-center justify-center">
+                                    <i class="ri-apple-fill text-xl"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const menuButton = document.querySelector('.ri-menu-line');
+            if (menuButton) {
+                menuButton.addEventListener('click', function() {
+                    // Mobile menu functionality would go here
+                });
+            }
+            
+            // Price slider functionality
+            const priceSlider = document.querySelector('.price-slider');
+            if (priceSlider) {
+                priceSlider.addEventListener('input', function() {
+                    // Update price display based on slider value
+                });
+            }
+            
+            // Add to wishlist functionality
+            const wishlistButtons = document.querySelectorAll('.ri-heart-line');
+            wishlistButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    this.classList.toggle('ri-heart-fill');
+                    this.classList.toggle('ri-heart-line');
+                    this.classList.toggle('text-primary');
+                });
+            });
+            
+            // Quick view functionality would be added here
+            
+            // Add to cart functionality would be added here
+        });
+    </script>
+</body>
+</html>
